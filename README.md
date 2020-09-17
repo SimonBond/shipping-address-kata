@@ -94,9 +94,13 @@ GERMANY
 
 see https://www.japan-guide.com/e/e2224.html
 
+Example 1:
+
 〒 106-0044  
 東京都港区東麻布 1-8-1  
 東麻布 IS ビル 4F  
+
+Example 2:
 
 Yagita Asami  
 Higashi Azabu IS Bldg 4F  
