@@ -190,8 +190,6 @@ describe('address label printer', () => {
         addressLine4: '',
         locality: '港区',
         region: '東京都',
-
-        
         country: 'JAPAN',
         postcode: '106-0044',
       };

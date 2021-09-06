@@ -26,15 +26,15 @@ const formatters = [
     },
     format: (addressData) => {
       const addressList = [
-        `${addressData.recipient}`,
-        `${addressData.addressLine1}`,
-        `${addressData.addressLine2}`,
-        `${addressData.addressLine3}`,
-        `${addressData.addressLine4}`,
-        `${addressData.locality}`,
-        `${addressData.region}`,
-        `${addressData.postcode}`,
-        `${addressData.country}`,
+        addressData.recipient,
+        addressData.addressLine1,
+        addressData.addressLine2,
+        addressData.addressLine3,
+        addressData.addressLine4,
+        addressData.locality,
+        addressData.region,
+        addressData.postcode,
+        addressData.country,
       ];
       return addressList;
     },
@@ -47,14 +47,14 @@ const formatters = [
     },
     format: (addressData) => {
       const addressList = [
-        `${addressData.recipient}`,
-        `${addressData.addressLine1}`,
-        `${addressData.addressLine2}`,
-        `${addressData.addressLine3}`,
-        `${addressData.addressLine4}`,
-        `${addressData.locality}`,
+        addressData.recipient,
+        addressData.addressLine1,
+        addressData.addressLine2,
+        addressData.addressLine3,
+        addressData.addressLine4,
+        addressData.locality,
         `${addressData.postcode} ${addressData.region}`,
-        `${addressData.country}`,
+        addressData.country,
       ];
       return addressList;
     },
@@ -67,13 +67,13 @@ const formatters = [
     },
     format: (addressData) => {
       const addressList = [
-        `${addressData.recipient.toUpperCase()}`,
-        `${addressData.addressLine1.toUpperCase()}`,
-        `${addressData.addressLine2.toUpperCase()}`,
-        `${addressData.addressLine3.toUpperCase()}`,
-        `${addressData.addressLine4.toUpperCase()}`,
+        addressData.recipient.toUpperCase(),
+        addressData.addressLine1.toUpperCase(),
+        addressData.addressLine2.toUpperCase(),
+        addressData.addressLine3.toUpperCase(),
+        addressData.addressLine4.toUpperCase(),
         `${addressData.locality.toUpperCase()} ${addressData.region.toUpperCase()} ${addressData.postcode.toUpperCase()}`,
-        `${addressData.country.toUpperCase()}`,
+        addressData.country.toUpperCase(),
       ];
       return addressList;
     },
@@ -86,15 +86,15 @@ const formatters = [
     },
     format: (addressData) => {
       const addressList = [
-        `${addressData.recipient}`,
-        `${addressData.addressLine1}`,
-        `${addressData.addressLine2}`,
-        `${addressData.addressLine3}`,
-        `${addressData.addressLine4}`,
-        `${addressData.locality}`,
-        `${addressData.region.toUpperCase()}`,
-        `${addressData.postcode}`,
-        `${addressData.country.toUpperCase()}`,
+        addressData.recipient,
+        addressData.addressLine1,
+        addressData.addressLine2,
+        addressData.addressLine3,
+        addressData.addressLine4,
+        addressData.locality,
+        addressData.region.toUpperCase(),
+        addressData.postcode,
+        addressData.country.toUpperCase(),
       ];
       return addressList;
     },
@@ -107,13 +107,13 @@ const formatters = [
     },
     format: (addressData) => {
       const addressList = [
-        `${addressData.recipient.toUpperCase()}`,
-        `${addressData.addressLine1.toUpperCase()}`,
-        `${addressData.addressLine2.toUpperCase()}`,
-        `${addressData.addressLine3.toUpperCase()}`,
-        `${addressData.addressLine4.toUpperCase()}`,
+        addressData.recipient.toUpperCase(),
+        addressData.addressLine1.toUpperCase(),
+        addressData.addressLine2.toUpperCase(),
+        addressData.addressLine3.toUpperCase(),
+        addressData.addressLine4.toUpperCase(),
         `${addressData.postcode.toUpperCase()} ${addressData.locality.toUpperCase()} ${addressData.region.toUpperCase()}`,
-        `${addressData.country.toUpperCase()}`,
+        addressData.country.toUpperCase(),
       ];
       return addressList;
     },
@@ -126,14 +126,14 @@ const formatters = [
     },
     format: (addressData) => {
       const addressList = [
-        `${addressData.recipient}`,
-        `${addressData.addressLine1}`,
-        `${addressData.addressLine2}`,
-        `${addressData.addressLine3}`,
-        `${addressData.addressLine4}`,
-        `${addressData.locality}`,
+        addressData.recipient,
+        addressData.addressLine1,
+        addressData.addressLine2,
+        addressData.addressLine3,
+        addressData.addressLine4,
+        addressData.locality,
         `${addressData.postcode} ${addressData.region}`,
-        `${addressData.country}`,
+        addressData.country,
       ];
       return addressList;
     },
@@ -146,14 +146,14 @@ const formatters = [
     },
     format: (addressData) => {
       const addressList = [
-        `${addressData.recipient}`,
-        `${addressData.addressLine1}`,
-        `${addressData.addressLine2}`,
-        `${addressData.addressLine3}`,
-        `${addressData.addressLine4}`,
-        `${addressData.locality}`,
+        addressData.recipient,
+        addressData.addressLine1,
+        addressData.addressLine2,
+        addressData.addressLine3,
+        addressData.addressLine4,
+        addressData.locality,
         `${addressData.postcode} ${addressData.region}`,
-        `${addressData.country}`,
+        addressData.country,
       ];
       return addressList;
     },
@@ -167,13 +167,13 @@ const formatters = [
     },
     format: (addressData) => {
       const addressList = [
-        `${addressData.recipient}`,
-        `${addressData.addressLine1}`,
-        `${addressData.addressLine2}`,
-        `${addressData.addressLine3}`,
-        `${addressData.addressLine4}`,
+        addressData.recipient,
+        addressData.addressLine1,
+        addressData.addressLine2,
+        addressData.addressLine3,
+        addressData.addressLine4,
         `${addressData.locality} ${addressData.region} ${addressData.postcode}`,
-        `${addressData.country}`,
+        addressData.country,
       ];
       return addressList;
     },
@@ -189,9 +189,27 @@ const formatters = [
       const addressList = [
         `〒 ${addressData.postcode}`,
         `${addressData.region}${addressData.locality}${addSpaces(addressData.addressLine2)}`,
-        `${addSpaces(addressData.addressLine1)}`,
-        `${addressData.recipient}`,
-        `${addressData.country}`,
+        addSpaces(addressData.addressLine1),
+        addressData.recipient,
+        addressData.country,
+      ];
+      return addressList;
+    },
+  },
+
+  {
+    locale: 'test',
+    canFormat: (addressData) => {
+      const country = addressData.country.trim().toUpperCase();
+      return country === 'JAPAN';
+    },
+    format: (addressData) => {
+      const addressList = [
+        `〒 ${addressData.postcode}`,
+        `${addressData.region}${addressData.locality}${addSpaces(addressData.addressLine2)}`,
+        addSpaces(addressData.addressLine1),
+        addressData.recipient,
+        addressData.country,
       ];
       return addressList;
     },
