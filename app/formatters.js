@@ -1,21 +1,22 @@
-
-const addSpaces = (text) => {
+const addSpaceBetweenAsciiAndNonAscii = (text) => {
   let result = '';
   if (test) {
     result += text[0];
-    let isAscii = text.charCodeAt(0) <= 127;
+    let isCurrentCharAscii = text.charCodeAt(0) <= 127;
     // eslint-disable-next-line no-plusplus
     for (let i = 1; i < text.length; ++i) {
-      const nextCharIsAscii = text.charCodeAt(i) <= 127;
-      if (isAscii !== nextCharIsAscii) {
+      const isNextCharAscii = text.charCodeAt(i) <= 127;
+      if (isCurrentCharAscii !== isNextCharAscii) {
         result += ' ';
       }
       result += text[i];
-      isAscii = nextCharIsAscii;
+      isCurrentCharAscii = isNextCharAscii;
     }
   }
   return result;
 };
+
+const jpCharRegex = /[\u3000-\u303F]|[\u3040-\u309F]|[\u30A0-\u30FF]|[\uFF00-\uFFEF]|[\u4E00-\u9FAF]|[\u2605-\u2606]|[\u2190-\u2195]|\u203B/g;
 
 const formatters = [
   {
@@ -162,8 +163,7 @@ const formatters = [
     locale: 'jp-en',
     canFormat: (addressData) => {
       const country = addressData.country.trim().toUpperCase();
-      const regex = /[\u3000-\u303F]|[\u3040-\u309F]|[\u30A0-\u30FF]|[\uFF00-\uFFEF]|[\u4E00-\u9FAF]|[\u2605-\u2606]|[\u2190-\u2195]|\u203B/g;
-      return country === 'JAPAN' && !regex.test(addressData.region);
+      return country === 'JAPAN' && !jpCharRegex.test(addressData.region);
     },
     format: (addressData) => {
       const addressList = [
@@ -182,14 +182,13 @@ const formatters = [
     locale: 'jp-jp',
     canFormat: (addressData) => {
       const country = addressData.country.trim().toUpperCase();
-      const regex = /[\u3000-\u303F]|[\u3040-\u309F]|[\u30A0-\u30FF]|[\uFF00-\uFFEF]|[\u4E00-\u9FAF]|[\u2605-\u2606]|[\u2190-\u2195]|\u203B/g;
-      return country === 'JAPAN' && regex.test(addressData.region);
+      return country === 'JAPAN' && jpCharRegex.test(addressData.region);
     },
     format: (addressData) => {
       const addressList = [
         `〒 ${addressData.postcode}`,
-        `${addressData.region}${addressData.locality}${addSpaces(addressData.addressLine2)}`,
-        addSpaces(addressData.addressLine1),
+        `${addressData.region}${addressData.locality}${addSpaceBetweenAsciiAndNonAscii(addressData.addressLine2)}`,
+        addSpaceBetweenAsciiAndNonAscii(addressData.addressLine1),
         addressData.recipient,
         addressData.country,
       ];
@@ -206,8 +205,8 @@ const formatters = [
     format: (addressData) => {
       const addressList = [
         `〒 ${addressData.postcode}`,
-        `${addressData.region}${addressData.locality}${addSpaces(addressData.addressLine2)}`,
-        addSpaces(addressData.addressLine1),
+        `${addressData.region}${addressData.locality}${addSpaceBetweenAsciiAndNonAscii(addressData.addressLine2)}`,
+        addSpaceBetweenAsciiAndNonAscii(addressData.addressLine1),
         addressData.recipient,
         addressData.country,
       ];

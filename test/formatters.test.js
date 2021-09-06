@@ -26,7 +26,7 @@ const data = {
   country: 'country',
 };
 
-describe('gb formatter', () => {
+xdescribe('gb formatter', () => {
   it('should ...', () => {
     const formatter = formatters.find((fm) => fm.locale === 'gb');
     const result = formatter.format(data);

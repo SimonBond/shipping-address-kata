@@ -10,6 +10,11 @@ const transformAddress = (addressData) => {
   if (!formatter) {
     // TODO choose a better default
     formatter = formatters.find((fm) => fm.locale === 'gb');
+
+    if (!formatter) {
+      // take the 1st one
+      [formatter] = formatters;
+    }
   }
 
   let address = formatter.format(addressData);
