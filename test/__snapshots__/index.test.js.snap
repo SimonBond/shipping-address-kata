@@ -1,5 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+// Fixed order of postcode and country
+
 exports[`address label printer running the application prints out a list of labels 1`] = `
 "+--------
 Sam Smith
@@ -9,13 +11,13 @@ My complex
 My Street
 My Town
 My Region
-UK
 MY1 2HR
+UK
 +--------
 Alex Johnson
 My place
 My Town
 My Region
-UK
-MY2 3PL"
+MY2 3PL
+UK"
 `;

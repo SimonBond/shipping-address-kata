@@ -1,16 +1,21 @@
 const fs = require('fs');
 const path = require('path');
+const { formatters } = require('./formatters');
 
 const dataFile = path.resolve(__dirname, '../data', 'addresses.json');
 
 const transformAddress = (addressData) => {
-  return Object.keys(addressData).reduce((addressList, item) => {
-    const line = addressData[item];
-    if (line !== '') {
-      addressList.push(line);
-    }
-    return addressList;
-  }, []);
+  let formatter = formatters.find((fm) => fm.canFormat(addressData));
+
+  if (!formatter) {
+    // TODO choose a better default
+    formatter = formatters.find((fm) => fm.locale === 'gb');
+  }
+
+  let address = formatter.format(addressData);
+
+  address = address.filter((line) => line); // remove blank lines
+  return address;
 };
 
 const templateAddress = (addressList) => {
