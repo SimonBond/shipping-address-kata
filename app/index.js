@@ -8,18 +8,18 @@ const transformAddress = (addressData) => {
   let formatter = formatters.find((fm) => fm.canFormat(addressData));
 
   if (!formatter) {
-    // TODO choose a better default
+    // choose gb as default...
     formatter = formatters.find((fm) => fm.locale === 'gb');
 
     if (!formatter) {
-      // take the 1st one
+      // ...or take the 1st one
       [formatter] = formatters;
     }
   }
 
   let address = formatter.format(addressData);
-
   address = address.filter((line) => line); // remove blank lines
+
   return address;
 };
 
