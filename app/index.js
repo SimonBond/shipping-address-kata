@@ -5,6 +5,8 @@ const { formatters } = require('./formatters');
 const dataFile = path.resolve(__dirname, '../data', 'addresses.json');
 
 const transformAddress = (addressData) => {
+  // TODO decide what to do if addressData is undefined
+
   let formatter = formatters.find((fm) => fm.canFormat(addressData));
 
   if (!formatter) {

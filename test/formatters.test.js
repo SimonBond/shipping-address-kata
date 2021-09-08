@@ -68,5 +68,5 @@ describe('On each formatter', () => {
         expect(result).toEqual(false);
       });
     });
-  })
+  });
 });

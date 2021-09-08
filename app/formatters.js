@@ -252,7 +252,9 @@ const formatters = [
       // to know it
       const addressList = [
         `〒 ${addressData.postcode}`,
-        `${addressData.region}${addressData.locality}${addSpaceBetweenAsciiAndNonAscii(addressData.addressLine2)}`,
+        `${addressData.region}${addressData.locality}${addSpaceBetweenAsciiAndNonAscii(
+          addressData.addressLine2
+        )}`,
         addSpaceBetweenAsciiAndNonAscii(addressData.addressLine1),
         addressData.recipient,
         addressData.country,
@@ -276,7 +278,9 @@ const formatters = [
       }
       const addressList = [
         `〒 ${addressData.postcode}`,
-        `${addressData.region}${addressData.locality}${addSpaceBetweenAsciiAndNonAscii(addressData.addressLine2)}`,
+        `${addressData.region}${addressData.locality}${addSpaceBetweenAsciiAndNonAscii(
+          addressData.addressLine2
+        )}`,
         addSpaceBetweenAsciiAndNonAscii(addressData.addressLine1),
         addressData.recipient,
         addressData.country,
