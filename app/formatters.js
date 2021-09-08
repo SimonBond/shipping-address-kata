@@ -242,10 +242,11 @@ const formatters = [
         return [];
       }
       // Spaces are added in addressLine1 and addressLine2 which are
-      // not present at www.japan-guide.com/e/e2224.html to match the sample
-      // address in readme.md.
-      // Sample address in readme.md includes addressLine1
-      // and excludes recipient
+      // not present at www.japan-guide.com/e/e2224.html but are needed
+      // to match the sample address in readme.md.
+      // Why spaces are needed and where the should go is not defined, so an
+      // algorithm has been invented.
+      // Sample address in readme.md includes addressLine1 and excludes recipient
       // Both are included here, but one may not be needed?
       // Country is also included as the originating postal service will need
       // to know it
