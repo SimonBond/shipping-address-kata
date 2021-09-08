@@ -262,32 +262,6 @@ const formatters = [
       return addressList;
     },
   },
-
-  {
-    locale: 'test',
-    canFormat: (addressData) => {
-      if (!addressData || !addressData.country) {
-        return false;
-      }
-      const country = addressData.country.trim().toUpperCase();
-      return country === 'JAPAN';
-    },
-    format: (addressData) => {
-      if (!addressData) {
-        return [];
-      }
-      const addressList = [
-        `〒 ${addressData.postcode}`,
-        `${addressData.region}${addressData.locality}${addSpaceBetweenAsciiAndNonAscii(
-          addressData.addressLine2
-        )}`,
-        addSpaceBetweenAsciiAndNonAscii(addressData.addressLine1),
-        addressData.recipient,
-        addressData.country,
-      ];
-      return addressList;
-    },
-  },
 ];
 
 module.exports = {
