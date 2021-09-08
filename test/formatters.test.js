@@ -1,6 +1,6 @@
 const { formatters } = require('../app/formatters');
 
-describe('formatters are consistent', () => {
+describe('formatters are consistent and', () => {
   it('should have canFormat methods', () => {
     formatters.forEach((formatter) => {
       expect(typeof formatter.canFormat).toEqual('function');
@@ -26,10 +26,19 @@ const data = {
   country: 'country',
 };
 
-xdescribe('gb formatter', () => {
-  it('should ...', () => {
-    const formatter = formatters.find((fm) => fm.locale === 'gb');
-    const result = formatter.format(data);
-    expect(result[0]).toEqual('recipient');
+describe('Each formatter', () => {
+  it('should return a result when asked to format something', () => {
+    formatters.forEach((formatter) => {
+      const result = formatter.format(data);
+      expect(result.length > 0).toBeTruthy();
+      expect(result[0]).toBeTruthy();
+    });
+  });
+
+  it('should return an empty array when asked to format nothing', () => {
+    formatters.forEach((formatter) => {
+      const result = formatter.format(undefined);
+      expect(result).toEqual([]);
+    });
   });
 });

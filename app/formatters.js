@@ -26,6 +26,9 @@ const formatters = [
       return country === 'UK' || country === 'UNITED KINGDOM';
     },
     format: (addressData) => {
+      if (!addressData) {
+        return [];
+      }
       const addressList = [
         addressData.recipient,
         addressData.addressLine1,
@@ -47,6 +50,9 @@ const formatters = [
       return country === 'SWITZERLAND';
     },
     format: (addressData) => {
+      if (!addressData) {
+        return [];
+      }
       const addressList = [
         addressData.recipient,
         addressData.addressLine1,
@@ -67,6 +73,9 @@ const formatters = [
       return country === 'USA';
     },
     format: (addressData) => {
+      if (!addressData) {
+        return [];
+      }
       const addressList = [
         addressData.recipient.toUpperCase(),
         addressData.addressLine1.toUpperCase(),
@@ -86,6 +95,9 @@ const formatters = [
       return country === 'HONG KONG';
     },
     format: (addressData) => {
+      if (!addressData) {
+        return [];
+      }
       const addressList = [
         addressData.recipient,
         addressData.addressLine1,
@@ -107,6 +119,9 @@ const formatters = [
       return country === 'ITALY';
     },
     format: (addressData) => {
+      if (!addressData) {
+        return [];
+      }
       const addressList = [
         addressData.recipient.toUpperCase(),
         addressData.addressLine1.toUpperCase(),
@@ -126,6 +141,9 @@ const formatters = [
       return country === 'FRANCE';
     },
     format: (addressData) => {
+      if (!addressData) {
+        return [];
+      }
       const addressList = [
         addressData.recipient,
         addressData.addressLine1,
@@ -146,6 +164,9 @@ const formatters = [
       return country === 'GERMANY';
     },
     format: (addressData) => {
+      if (!addressData) {
+        return [];
+      }
       const addressList = [
         addressData.recipient,
         addressData.addressLine1,
@@ -166,6 +187,9 @@ const formatters = [
       return country === 'JAPAN' && !jpCharRegex.test(addressData.region);
     },
     format: (addressData) => {
+      if (!addressData) {
+        return [];
+      }
       const addressList = [
         addressData.recipient,
         addressData.addressLine1,
@@ -185,6 +209,9 @@ const formatters = [
       return country === 'JAPAN' && jpCharRegex.test(addressData.region);
     },
     format: (addressData) => {
+      if (!addressData) {
+        return [];
+      }
       const addressList = [
         `〒 ${addressData.postcode}`,
         `${addressData.region}${addressData.locality}${addSpaceBetweenAsciiAndNonAscii(addressData.addressLine2)}`,
@@ -203,6 +230,9 @@ const formatters = [
       return country === 'JAPAN';
     },
     format: (addressData) => {
+      if (!addressData) {
+        return [];
+      }
       const addressList = [
         `〒 ${addressData.postcode}`,
         `${addressData.region}${addressData.locality}${addSpaceBetweenAsciiAndNonAscii(addressData.addressLine2)}`,
