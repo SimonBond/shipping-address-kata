@@ -1,6 +1,6 @@
 const addSpaceBetweenAsciiAndNonAscii = (text) => {
   let result = '';
-  if (test) {
+  if (text) {
     result += text[0];
     let isCurrentCharAscii = text.charCodeAt(0) <= 127;
     // eslint-disable-next-line no-plusplus
@@ -22,6 +22,9 @@ const formatters = [
   {
     locale: 'gb',
     canFormat: (addressData) => {
+      if (!addressData || !addressData.country) {
+        return false;
+      }
       const country = addressData.country.trim().toUpperCase();
       return country === 'UK' || country === 'UNITED KINGDOM';
     },
@@ -46,6 +49,9 @@ const formatters = [
   {
     locale: 'ch',
     canFormat: (addressData) => {
+      if (!addressData || !addressData.country) {
+        return false;
+      }
       const country = addressData.country.trim().toUpperCase();
       return country === 'SWITZERLAND';
     },
@@ -69,6 +75,9 @@ const formatters = [
   {
     locale: 'us',
     canFormat: (addressData) => {
+      if (!addressData || !addressData.country) {
+        return false;
+      }
       const country = addressData.country.trim().toUpperCase();
       return country === 'USA';
     },
@@ -91,6 +100,9 @@ const formatters = [
   {
     locale: 'hk',
     canFormat: (addressData) => {
+      if (!addressData || !addressData.country) {
+        return false;
+      }
       const country = addressData.country.trim().toUpperCase();
       return country === 'HONG KONG';
     },
@@ -115,6 +127,9 @@ const formatters = [
   {
     locale: 'it',
     canFormat: (addressData) => {
+      if (!addressData || !addressData.country) {
+        return false;
+      }
       const country = addressData.country.trim().toUpperCase();
       return country === 'ITALY';
     },
@@ -137,6 +152,9 @@ const formatters = [
   {
     locale: 'fr',
     canFormat: (addressData) => {
+      if (!addressData || !addressData.country) {
+        return false;
+      }
       const country = addressData.country.trim().toUpperCase();
       return country === 'FRANCE';
     },
@@ -160,6 +178,9 @@ const formatters = [
   {
     locale: 'de',
     canFormat: (addressData) => {
+      if (!addressData || !addressData.country) {
+        return false;
+      }
       const country = addressData.country.trim().toUpperCase();
       return country === 'GERMANY';
     },
@@ -183,6 +204,9 @@ const formatters = [
   {
     locale: 'jp-en',
     canFormat: (addressData) => {
+      if (!addressData || !addressData.country) {
+        return false;
+      }
       const country = addressData.country.trim().toUpperCase();
       return country === 'JAPAN' && !jpCharRegex.test(addressData.region);
     },
@@ -190,6 +214,8 @@ const formatters = [
       if (!addressData) {
         return [];
       }
+      // Country is included as the originating postal service will need
+      // to know it
       const addressList = [
         addressData.recipient,
         addressData.addressLine1,
@@ -205,6 +231,9 @@ const formatters = [
   {
     locale: 'jp-jp',
     canFormat: (addressData) => {
+      if (!addressData || !addressData.country) {
+        return false;
+      }
       const country = addressData.country.trim().toUpperCase();
       return country === 'JAPAN' && jpCharRegex.test(addressData.region);
     },
@@ -212,6 +241,14 @@ const formatters = [
       if (!addressData) {
         return [];
       }
+      // Spaces are added in addressLine1 and addressLine2 which are
+      // not present at www.japan-guide.com/e/e2224.html to match the sample
+      // address in readme.md.
+      // Sample address in readme.md includes addressLine1
+      // and excludes recipient
+      // Both are included here, but one may not be needed?
+      // Country is also included as the originating postal service will need
+      // to know it
       const addressList = [
         `〒 ${addressData.postcode}`,
         `${addressData.region}${addressData.locality}${addSpaceBetweenAsciiAndNonAscii(addressData.addressLine2)}`,
@@ -226,6 +263,9 @@ const formatters = [
   {
     locale: 'test',
     canFormat: (addressData) => {
+      if (!addressData || !addressData.country) {
+        return false;
+      }
       const country = addressData.country.trim().toUpperCase();
       return country === 'JAPAN';
     },
