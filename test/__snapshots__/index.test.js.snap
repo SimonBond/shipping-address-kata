@@ -1,7 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-// Fixed order of postcode and country
-
 exports[`address label printer running the application prints out a list of labels 1`] = `
 "+--------
 Sam Smith

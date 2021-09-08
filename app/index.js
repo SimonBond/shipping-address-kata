@@ -15,12 +15,16 @@ const transformAddress = (addressData) => {
       // ...or take the 1st one
       [formatter] = formatters;
     }
+
+    if (!formatter) {
+      return ['Failed to format address - no suitable formatter found'];
+    }
   }
 
-  let address = formatter.format(addressData);
-  address = address.filter((line) => line); // remove blank lines
+  let addressList = formatter.format(addressData);
+  addressList = addressList.filter((line) => line); // remove blank lines
 
-  return address;
+  return addressList;
 };
 
 const templateAddress = (addressList) => {
@@ -53,6 +57,7 @@ if (require.main === module) {
     transformAddress,
     templateAddress,
     loadAddressData,
+    formatters,
     run,
   };
 }

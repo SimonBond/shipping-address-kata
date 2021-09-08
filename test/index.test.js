@@ -1,5 +1,11 @@
 const fs = require('fs');
-const { transformAddress, templateAddress, loadAddressData, run } = require('../app/index');
+const {
+  transformAddress,
+  templateAddress,
+  loadAddressData,
+  formatters,
+  run,
+} = require('../app/index');
 
 describe('address label printer', () => {
   describe('transforming an address', () => {
@@ -311,6 +317,34 @@ describe('address label printer', () => {
       // eslint-disable-next-line no-console
       const message = console.log.mock.calls[0][0];
       expect(message).toMatchSnapshot();
+    });
+  });
+
+  // Tests seem to be performed in order
+  // Make this test the last as it replaces the value of formatters
+  // Is there a way to mock a variable?
+  describe('address label printer errors', () => {
+    it("returns a message if it can't format the address", () => {
+      const data = {
+        recipient: 'Sam Smith',
+        addressLine1: 'My flat name',
+        region: 'My Region',
+        country: 'UK',
+        postcode: 'MY1 2HR',
+        addressLine2: 'My Apartment building',
+        addressLine3: 'My complex',
+        addressLine4: 'My Street',
+        locality: 'My Town',
+      };
+
+      // remove all the formatters
+      while (formatters.length > 0) {
+        formatters.pop();
+      }
+
+      expect(transformAddress(data)).toEqual([
+        'Failed to format address - no suitable formatter found',
+      ]);
     });
   });
 });
